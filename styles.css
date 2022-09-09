@@ -200,7 +200,7 @@ main {
   color: var(--dark-gray);
   font-family: inherit;
   font-size: 1.8rem;
-  font-weight: 400;
+  font-weight: 500;
   text-transform: uppercase;
 
   backdrop-filter: blur(10px);
@@ -210,7 +210,8 @@ main {
   border: none;
   border-radius: 50rem;
   box-shadow: var(--light-shadow);
-  padding: 0.7rem 2.5rem;
+  padding: 1rem;
+  width: 10rem;
 
   left: 50%;
   position: absolute;
@@ -232,17 +233,26 @@ main {
   width: 10rem;
 }
 
-.btn--new:hover {
-  background-color: white;
-  color: var(--cranberry);
-}
-
 .btn--roll {
   top: 42rem;
 }
 
 .btn--hold {
   top: 48rem;
+}
+
+.btn--inactive {
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(30px);
+  cursor: none;
+  pointer-events: none;
+}
+
+.btn--new:hover,
+.btn--roll:hover,
+.btn--hold:hover {
+  background-color: white;
+  color: var(--cranberry);
 }
 
 .btn:active {
