@@ -1,0 +1,308 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
+:root {
+  --cranberry: #c7365f;
+  --dark-gray: #444;
+  --main-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.25);
+  --light-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+}
+
+* {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  color: var(--dark-gray);
+  font-family: 'Nunito', sans-serif;
+  font-weight: 400;
+
+  background-image: linear-gradient(
+    to top left,
+    #753682 0%,
+    var(--cranberry) 100%
+  );
+
+  align-content: center;
+  display: grid;
+  justify-content: center;
+  height: 100vh;
+}
+
+main {
+  display: grid;
+  grid-template-areas:
+    'nav'
+    'players';
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+  width: 100rem;
+}
+
+/* Navigation */
+.top-nav {
+  grid-area: nav;
+  margin-bottom: 0.5rem;
+  padding-right: 0.75rem;
+}
+
+.nav-options {
+  display: grid;
+  gap: 20px;
+  grid-template-areas: 'instructions restart';
+  justify-content: end;
+
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 1.7rem;
+}
+
+.nav--instructions {
+  grid-area: instructions;
+}
+
+.nav--restart {
+  grid-area: restart;
+}
+
+.nav--how-to-play:hover,
+.nav--restart:hover {
+  color: white;
+  cursor: pointer;
+}
+
+/* Player Board */
+.players {
+  border-radius: 9px;
+  display: grid;
+  grid-area: players;
+  grid-template-areas: 'player1 player2';
+  height: 60rem;
+  overflow: hidden;
+  width: 100rem;
+}
+
+.player--1 {
+  grid-area: player1;
+}
+
+.player--2 {
+  grid-area: player2;
+}
+
+.player {
+  background-color: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(200px);
+  box-shadow: var(--main-shadow);
+  display: grid;
+  filter: blur();
+  grid-template-areas:
+    'name'
+    'score'
+    'current';
+  grid-template-rows: min-content;
+  height: inherit;
+  justify-items: center;
+  padding: 9rem;
+  transition: all 0.75s;
+}
+
+.name {
+  grid-area: name;
+  font-size: 4rem;
+  font-weight: 300;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  word-spacing: 2px;
+}
+
+.score {
+  color: var(--cranberry);
+  font-size: 8rem;
+  font-weight: 300;
+  grid-area: score;
+  margin-bottom: auto;
+}
+
+.current {
+  background-color: var(--cranberry);
+  border-radius: 9px;
+  box-shadow: var(--light-shadow);
+  color: #fff;
+  grid-area: current;
+  height: fit-content;
+  margin-top: 10.5rem;
+  opacity: 0.8;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.75s;
+  width: 65%;
+}
+
+.current-label {
+  color: white;
+  font-size: 1.7rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.current-score {
+  font-size: 3.5rem;
+}
+
+/* Active Player */
+.player--active {
+  background-color: rgba(255, 255, 255, 0.75);
+}
+
+.player--active .name {
+  font-weight: 700;
+}
+
+.player--active .score {
+  font-weight: 400;
+}
+
+.player--active .current {
+  opacity: 1;
+}
+
+/* Winning Player */
+.player--winner {
+  background-color: #2f2f2f;
+}
+
+.player--winner .name {
+  color: var(--cranberry);
+  font-weight: 700;
+}
+
+/* Dice */
+.dice {
+  border-radius: 8px;
+  box-shadow: var(--main-shadow);
+  height: 10rem;
+  left: 50%;
+  position: absolute;
+  top: 18.75rem;
+  transform: translateX(-50%);
+}
+
+/* Buttons */
+.btn {
+  color: var(--dark-gray);
+  font-family: inherit;
+  font-size: 1.8rem;
+  font-weight: 400;
+  text-transform: uppercase;
+
+  backdrop-filter: blur(10px);
+  background: none;
+  background-color: white;
+  background-color: rgba(255, 255, 255, 0.6);
+  border: none;
+  border-radius: 50rem;
+  box-shadow: var(--light-shadow);
+  padding: 0.7rem 2.5rem;
+
+  left: 50%;
+  position: absolute;
+
+  cursor: pointer;
+  transform: translateX(-50%);
+  transition: all 0.2s;
+}
+
+.btn--new {
+  top: 7rem;
+}
+
+.btn--roll {
+  top: 42rem;
+}
+
+.btn--hold {
+  top: 48rem;
+}
+
+.btn:active {
+  box-shadow: var(--light-shadow);
+  transform: translate(-50%, 3px);
+}
+
+.btn:focus {
+  outline: none;
+}
+
+/* Modal  */
+.overlay {
+  backdrop-filter: blur(3px);
+  background-color: rgba(0, 0, 0, 0.6);
+
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 5;
+}
+
+.modal {
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: var(--main-shadow);
+  width: 50%;
+  padding: 1rem 6rem 6rem;
+
+  display: grid;
+  grid-template-areas:
+    'modalClose'
+    'modalTitle'
+    'modalContent';
+  left: 50%;
+  position: absolute;
+  top: 49%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+.close-modal {
+  background-color: transparent;
+  border: none;
+
+  color: var(--dark-gray);
+  font-size: 5rem;
+
+  grid-area: modalClose;
+  justify-self: end;
+  margin-right: -4rem;
+  transition: color ease-in-out 0.1s;
+}
+
+.close-modal:hover {
+  color: var(--cranberry);
+  cursor: pointer;
+  transition: color ease-in-out 0.2s;
+}
+
+.modal-title {
+  font-size: 3.2rem;
+  grid-area: modalTitle;
+}
+
+.modal-content {
+  font-size: 1.8rem;
+  grid-area: modalContent;
+  margin-top: 2rem;
+}
+
+/* Hidden */
+.hidden {
+  display: none;
+}
