@@ -3,6 +3,9 @@
 // feat: custom player names
 // feat: add readme file to git
 // feat: add game title to page?
+// change roll and hold dice styles when win met (appear grayed out)
+// add hover styles to roll/hold buttons during game play
+// fix: reset win points to 100
 // deploy app
 
 'use strict';
@@ -60,6 +63,7 @@ function startGame() {
   playing = true;
 
   dice.classList.add('hidden');
+  btnNew.classList.add('hidden');
 
   // scores to 0
   score1.textContent = 0;
@@ -149,6 +153,9 @@ btnHold.addEventListener('click', function () {
       // hide dice
       dice.classList.add('hidden');
 
+      // show new game button
+      btnNew.classList.remove('hidden');
+
       updatePlayerScore(activePlayer);
 
       // add player--winner
@@ -165,6 +172,9 @@ btnHold.addEventListener('click', function () {
 
 // Restart game
 restartNav.addEventListener('click', startGame);
+
+// New game
+btnNew.addEventListener('click', startGame);
 
 // Instructions modal
 howToPlayNav.addEventListener('click', function () {

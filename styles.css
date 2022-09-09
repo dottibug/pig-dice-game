@@ -1,8 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600&display=swap');
 
 :root {
   --cranberry: #c7365f;
   --dark-gray: #444;
+  --grape: #753682;
   --main-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.25);
   --light-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
 }
@@ -25,7 +26,7 @@ body {
 
   background-image: linear-gradient(
     to top left,
-    #753682 0%,
+    var(--grape) 0%,
     var(--cranberry) 100%
   );
 
@@ -220,7 +221,20 @@ main {
 }
 
 .btn--new {
-  top: 7rem;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 9px;
+  color: var(--dark-gray);
+  font-size: 2.2rem;
+  font-weight: 700;
+  height: 10rem;
+  padding: 0;
+  top: 18.75rem;
+  width: 10rem;
+}
+
+.btn--new:hover {
+  background-color: white;
+  color: var(--cranberry);
 }
 
 .btn--roll {
