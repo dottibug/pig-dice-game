@@ -368,8 +368,11 @@ i {
   transition: color ease-in-out 0.2s;
 }
 
-.modal-title {
+.modal-title,
+span {
+  color: var(--dark-gray);
   font-size: 3.2rem;
+  font-weight: 600;
   grid-area: modalTitle;
   margin-bottom: 2.4rem;
 }
