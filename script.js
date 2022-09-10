@@ -1,5 +1,4 @@
 // TODO
-// fix: rest win points to 100
 // feat: responsive design
 // feat: add readme file to git
 // deploy app
@@ -106,7 +105,7 @@ function holdDice() {
     // add current score to active player's final score
     finalScores[activePlayer - 1] += currentScore;
 
-    if (finalScores[activePlayer - 1] >= 20) {
+    if (finalScores[activePlayer - 1] >= 100) {
       // win condition met
       playing = false;
 
