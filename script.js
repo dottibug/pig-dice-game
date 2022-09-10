@@ -1,5 +1,6 @@
 // TODO
-// feat: add game title to page?
+// style: resize board a bit
+// feat: responsive?
 // fix: reset win points to 100
 // feat: add readme file to git
 // deploy app
