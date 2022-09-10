@@ -51,8 +51,6 @@ const nameInput2 = document.getElementById('name--input2');
 
 let activePlayer, currentScore, finalScores, playing;
 
-startGame();
-
 function startGame() {
   activePlayer = 1;
   currentScore = 0;
@@ -129,6 +127,8 @@ function hideModal() {
   howToPlay.classList.add('hidden');
   playerNameForm.classList.add('hidden');
 }
+
+startGame();
 
 // Rolling Dice
 btnRoll.addEventListener('click', function () {
