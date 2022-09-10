@@ -1,7 +1,4 @@
 // TODO
-// feat: custom player names (CHANGE THIS TO SETTINGS MENU BUTTON; can be changed anytime)
-// set up server
-// feat: finish custom player names
 // feat: add game title to page?
 // fix: reset win points to 100
 // feat: add readme file to git
@@ -46,8 +43,8 @@ const howToPlay = document.querySelector('.how-to-play');
 
 // Player Name Input Elements
 const playerNameForm = document.querySelector('.form--player-names');
-const nameInput1 = document.getElementById('name--input1');
-const nameInput2 = document.getElementById('name--input2');
+// const nameInput1 = document.getElementById('nameInput1');
+// const nameInput2 = document.getElementById('nameInput2');
 
 let activePlayer, currentScore, finalScores, playing;
 

@@ -19,7 +19,8 @@
 
       <section class="players">
         <section class="player player--1 player--active">
-          <h2 class="name" id="name--1">Player 1</h2>
+          <h2 class="name name1" id="name--1"><%= playerOneName %></h2>
+
           <p class="score" id="score--1">43</p>
           <div class="current">
             <p class="current-label">Current</p>
@@ -27,7 +28,8 @@
           </div>
         </section>
         <section class="player player--2">
-          <h2 class="name" id="name--2">Player 2</h2>
+          <h2 class="name" id="name--2"><%= playerTwoName %></h2>
+
           <p class="score" id="score--2">24</p>
           <div class="current">
             <p class="current-label">Current</p>
@@ -56,22 +58,22 @@
           turn and add points from the current round to your game total. First
           player to reach 100 points wins!
         </p>
-        <form action="" method="post" class="form--player-names hidden">
+        <form action="/" method="post" class="form--player-names hidden">
           <div class="input--player1 player-inputs">
-            <label for="name--input1">Player 1</label>
+            <label for="nameInput1">Player 1</label>
             <input
               type="text"
-              name="name--input1"
-              id="name--input1"
+              name="nameInput1"
+              id="nameInput1"
               placeholder="Player name"
             />
           </div>
           <div class="input--player2 player-inputs">
-            <label for="name--input2">Player 2</label>
+            <label for="nameInput2">Player 2</label>
             <input
               type="text"
-              name="name--input2"
-              id="name--input2"
+              name="nameInput2"
+              id="nameInput2"
               placeholder="Player name"
             />
           </div>
@@ -82,6 +84,6 @@
       </div>
       <div class="overlay hidden"></div>
     </section>
-    <script src="app.js"></script>
+    <script src="/script.js"></script>
   </body>
 </html>
