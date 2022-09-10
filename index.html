@@ -12,6 +12,7 @@
       <section class="top-nav">
         <div class="nav-options">
           <h3 class="nav--how-to-play">How to Play</h3>
+          <h3 class="nav--settings">Settings</h3>
           <h3 class="nav--restart">Restart</h3>
         </div>
       </section>
@@ -46,7 +47,7 @@
       <div class="modal hidden">
         <button class="close-modal">&times;</button>
         <h3 class="modal-title">Default Title</h3>
-        <p class="modal-content how-to-play">
+        <p class="modal-content how-to-play hidden">
           On your turn, roll the die as many times as you wish. Each roll gets
           added to your point total for the current round. Be careful&mdash;if
           you roll a 1, your points are lost and your turn is over! <br />
@@ -55,6 +56,29 @@
           turn and add points from the current round to your game total. First
           player to reach 100 points wins!
         </p>
+        <form action="" method="post" class="form--player-names hidden">
+          <div class="input--player1 player-inputs">
+            <label for="name--input1">Player 1</label>
+            <input
+              type="text"
+              name="name--input1"
+              id="name--input1"
+              placeholder="Player name"
+            />
+          </div>
+          <div class="input--player2 player-inputs">
+            <label for="name--input2">Player 2</label>
+            <input
+              type="text"
+              name="name--input2"
+              id="name--input2"
+              placeholder="Player name"
+            />
+          </div>
+          <div class="btn--submit-player-names">
+            <button type="submit">Let's Play!</button>
+          </div>
+        </form>
       </div>
       <div class="overlay hidden"></div>
     </section>

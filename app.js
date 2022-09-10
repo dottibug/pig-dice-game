@@ -1,8 +1,10 @@
 // TODO
-// feat: custom player names
-// feat: add readme file to git
+// feat: custom player names (CHANGE THIS TO SETTINGS MENU BUTTON; can be changed anytime)
+// set up server
+// feat: finish custom player names
 // feat: add game title to page?
 // fix: reset win points to 100
+// feat: add readme file to git
 // deploy app
 
 'use strict';
@@ -10,6 +12,7 @@
 // Nav Elements
 const howToPlayNav = document.querySelector('.nav--how-to-play');
 const restartNav = document.querySelector('.nav--restart');
+const settingsNav = document.querySelector('.nav--settings');
 
 // Player Elements
 const players = document.querySelectorAll('.player');
@@ -42,18 +45,15 @@ const modalContent = document.querySelector('.modal-content');
 const howToPlay = document.querySelector('.how-to-play');
 
 // Player Name Input Elements
-const nameInput1 = document.querySelector('#name--input1');
-const nameInput2 = document.querySelector('#name--input2');
+const playerNameForm = document.querySelector('.form--player-names');
+const nameInput1 = document.getElementById('name--input1');
+const nameInput2 = document.getElementById('name--input2');
 
 let activePlayer, currentScore, finalScores, playing;
 
 startGame();
 
 function startGame() {
-  // display player name modal
-  // get player name inputs (default player 1 and player 2 if none given)
-  // change textcontent of player name
-
   activePlayer = 1;
   currentScore = 0;
   finalScores = [0, 0];
@@ -103,16 +103,31 @@ function currentScoreZero(activePlayer) {
     currentScore;
 }
 
+// Change Player Names
+// TODO
+
 // Show Modal
-function showModal() {
+function showModal(modalName) {
   modal.classList.remove('hidden');
   overlay.classList.remove('hidden');
+
+  if (modalName === 'settings') {
+    modalTitle.textContent = `Game Settings`;
+    playerNameForm.classList.remove('hidden');
+  }
+
+  if (modalName === 'howToPlay') {
+    modalTitle.textContent = `How To Play`;
+    howToPlay.classList.remove('hidden');
+  }
 }
 
 // Hide Modal
 function hideModal() {
   modal.classList.add('hidden');
   overlay.classList.add('hidden');
+  howToPlay.classList.add('hidden');
+  playerNameForm.classList.add('hidden');
 }
 
 // Rolling Dice
@@ -179,12 +194,17 @@ restartNav.addEventListener('click', startGame);
 // New game
 btnNew.addEventListener('click', startGame);
 
-// Instructions modal
+// How to Play Modal
 howToPlayNav.addEventListener('click', function () {
-  modalTitle.textContent = `How To Play`;
-  showModal();
+  showModal('howToPlay');
 });
 
+// Settings Modal
+settingsNav.addEventListener('click', function () {
+  showModal('settings');
+});
+
+// Close Modals
 btnCloseModal.addEventListener('click', function () {
   hideModal();
 });
