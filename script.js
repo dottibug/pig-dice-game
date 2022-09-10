@@ -1,7 +1,7 @@
 // TODO
-// style: resize board a bit
-// feat: responsive?
-// fix: reset win points to 100
+// feat: use keys (R and H) for roll and hold
+// fix: rest win points to 100
+// feat: responsive design
 // feat: add readme file to git
 // deploy app
 
@@ -98,9 +98,6 @@ function currentScoreZero(activePlayer) {
   document.getElementById(`current--${activePlayer}`).textContent =
     currentScore;
 }
-
-// Change Player Names
-// TODO
 
 // Show Modal
 function showModal(modalName) {
