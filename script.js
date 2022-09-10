@@ -1,5 +1,4 @@
 // TODO
-// feat: use keys (R and H) for roll and hold
 // fix: rest win points to 100
 // feat: responsive design
 // feat: add readme file to git
@@ -77,6 +76,64 @@ function startGame() {
   player2.classList.remove('player--active');
 }
 
+// Roll Dice
+function rollDice() {
+  if (playing) {
+    // generate random number
+    let roll = Math.trunc(Math.random() * 6) + 1;
+
+    // display dice
+    dice.classList.remove('hidden');
+    dice.src = `images/dice-${roll}.png`;
+
+    // add roll to score
+    if (roll !== 1) {
+      currentScore += roll;
+      document.getElementById(`current--${activePlayer}`).textContent =
+        currentScore;
+    } else {
+      // reset player's current score
+      currentScoreZero(activePlayer);
+
+      switchPlayer(activePlayer);
+    }
+  }
+}
+
+// Hold Dice
+function holdDice() {
+  if (playing) {
+    // add current score to active player's final score
+    finalScores[activePlayer - 1] += currentScore;
+
+    if (finalScores[activePlayer - 1] >= 20) {
+      // win condition met
+      playing = false;
+
+      // hide dice
+      dice.classList.add('hidden');
+
+      // show new game button
+      btnNew.classList.remove('hidden');
+
+      // apply inactive style to roll & hide btns
+      btnRoll.classList.add('btn--inactive');
+      btnHold.classList.add('btn--inactive');
+
+      updatePlayerScore(activePlayer);
+
+      // add player--winner
+      document
+        .querySelector(`.player--${activePlayer}`)
+        .classList.toggle('player--winner');
+    } else {
+      updatePlayerScore(activePlayer);
+      currentScoreZero(activePlayer);
+      switchPlayer(activePlayer);
+    }
+  }
+}
+
 // Switch Player
 function switchPlayer(active) {
   activePlayer = active === 1 ? 2 : 1;
@@ -125,69 +182,35 @@ function hideModal() {
 
 startGame();
 
-// Rolling Dice
-btnRoll.addEventListener('click', function () {
-  if (playing) {
-    // generate random number
-    let roll = Math.trunc(Math.random() * 6) + 1;
+// Roll Dice Click & Key Events
+btnRoll.addEventListener('click', rollDice);
 
-    // display dice
-    dice.classList.remove('hidden');
-    dice.src = `images/dice-${roll}.png`;
-
-    // add roll to score
-    if (roll !== 1) {
-      currentScore += roll;
-      document.getElementById(`current--${activePlayer}`).textContent =
-        currentScore;
-    } else {
-      // reset player's current score
-      currentScoreZero(activePlayer);
-
-      switchPlayer(activePlayer);
-    }
+document.addEventListener('keydown', function (event) {
+  if (event.key === 'r' || event.key === 'R') {
+    rollDice();
   }
 });
 
-// Hold dice
-btnHold.addEventListener('click', function () {
-  if (playing) {
-    // add current score to active player's final score
-    finalScores[activePlayer - 1] += currentScore;
+// Hold Dice Click & Key Events
+btnHold.addEventListener('click', holdDice);
 
-    if (finalScores[activePlayer - 1] >= 20) {
-      // win condition met
-      playing = false;
-
-      // hide dice
-      dice.classList.add('hidden');
-
-      // show new game button
-      btnNew.classList.remove('hidden');
-
-      // apply inactive style to roll & hide btns
-      btnRoll.classList.add('btn--inactive');
-      btnHold.classList.add('btn--inactive');
-
-      updatePlayerScore(activePlayer);
-
-      // add player--winner
-      document
-        .querySelector(`.player--${activePlayer}`)
-        .classList.toggle('player--winner');
-    } else {
-      updatePlayerScore(activePlayer);
-      currentScoreZero(activePlayer);
-      switchPlayer(activePlayer);
-    }
+document.addEventListener('keydown', function (event) {
+  if (event.key === 'h' || event.key === 'H') {
+    holdDice();
   }
 });
 
 // Restart game
 restartNav.addEventListener('click', startGame);
 
-// New game
+// New game Click & Key Events
 btnNew.addEventListener('click', startGame);
+
+document.addEventListener('keydown', function (event) {
+  if (event.key === 'n' || event.key === 'N') {
+    startGame();
+  }
+});
 
 // How to Play Modal
 howToPlayNav.addEventListener('click', function () {
