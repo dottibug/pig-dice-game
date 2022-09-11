@@ -42,8 +42,6 @@ const howToPlay = document.querySelector('.how-to-play');
 
 // Player Name Input Elements
 const playerNameForm = document.querySelector('.form--player-names');
-// const nameInput1 = document.getElementById('nameInput1');
-// const nameInput2 = document.getElementById('nameInput2');
 
 let activePlayer, currentScore, finalScores, playing;
 
