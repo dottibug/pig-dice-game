@@ -15,9 +15,6 @@ const players = document.querySelectorAll('.player');
 const player1 = document.querySelector('.player--1');
 const player2 = document.querySelector('.player--2');
 
-const playerName1 = document.querySelector('#name--1');
-const playerName2 = document.querySelector('#name--2');
-
 const score1 = document.getElementById('score--1');
 const score2 = document.getElementById('score--2');
 
